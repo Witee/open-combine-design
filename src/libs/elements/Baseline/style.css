@@ -1,0 +1,15 @@
+.baseline-wrapper {
+  width: 100%;
+  height: 2rem;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.baseline-line {
+  display: inline-block;
+  width: 30%;
+  border-top: 0.5px dashed #999;
+  border-bottom: 0.5px dashed #999;
+  vertical-align: middle;
+  margin: 0.5rem;
+}

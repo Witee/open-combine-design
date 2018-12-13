@@ -1,0 +1,92 @@
+{
+  "name": "open-combine-design",
+  "version": "1.0.83",
+  "description": "基于 Antd(2.13) 组件的组合设计",
+  "main": "dist/index.js",
+  "scripts": {
+    "packlibs": "rm -rf ./dist && webpack --config ./config/webpack.config.libs.js",
+    "start": "NODE_ENV=development && node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom",
+    "upload": "npm run build && rsync -avz --delete build/ test@192.168.4.191::open_combine_design",
+    "pub": "npm version patch && npm run packlibs && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Witee/open-combine-design.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Witee/open-combine-design/issues"
+  },
+  "homepage": "https://github.com/Witee/open-combine-design#readme",
+  "author": "Witee",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-import": "^1.7.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "case-sensitive-paths-webpack-plugin": "2.1.1",
+    "chalk": "^2.4.1",
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^0.28.11",
+    "dotenv": "^6.1.0",
+    "dotenv-expand": "^4.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "eslint-watch": "^3.1.5",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^2.0.0",
+    "glob": "^7.1.2",
+    "html-webpack-plugin": "^2.22.0",
+    "normalize.css": "^8.0.1",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-loader": "^3.0.0",
+    "prop-types": "^15.6.1",
+    "react-dev-utils": "^5.0.1",
+    "react-redux": "4.4.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
+    "redux": "3.6.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "style-loader": "^0.21.0",
+    "sw-precache-webpack-plugin": "^0.11.5",
+    "url-loader": "^1.1.2",
+    "watch": "^1.0.2",
+    "webpack": "2.6.1",
+    "webpack-dev-server": "2.9.4",
+    "webpack-manifest-plugin": "1.3.2",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "peerDependencies": {
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
+  },
+  "dependencies": {
+    "antd": "^2.13.14",
+    "echarts": "^4.2.0-rc.2",
+    "echarts-for-react": "^2.0.14",
+    "echarts-wordcloud": "^1.1.3",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "open-js-tools": "^1.0.8",
+    "react": "^15.6.2",
+    "react-color": "^2.14.1",
+    "react-dom": "^15.6.2",
+    "react-markdown": "^4.0.3"
+  },
+  "files": [
+    "dist"
+  ]
+}
