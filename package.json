@@ -1,6 +1,6 @@
 {
   "name": "open-combine-design",
-  "version": "1.0.83",
+  "version": "1.0.84",
   "description": "基于 Antd(2.13) 组件的组合设计",
   "main": "dist/index.js",
   "scripts": {
