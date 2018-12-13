@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Form, Radio } from 'antd';
 
 /**
-  Echarts 词云图系列 配置项
+  echarts 词云图系列 配置项
 
-  Series 返回的是整个 Echarts4.x 中 series 的配置内容
+  Series 返回的是整个 echarts4.x 中 series 的配置内容
 
   注意：数据统一使用 dataset 进行设置，不在 series 中
       即 series 的对象中没有 data 字段

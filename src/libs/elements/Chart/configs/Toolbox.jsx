@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Form, Checkbox } from 'antd';
 
 /**
-  Echarts Toolbox 配置项，受控组件
+  echarts Toolbox 配置项，受控组件
 
-  Toolbox 返回的是整个 Echarts4.x 中 toolbox 的配置内容，如 saveAsImage
+  Toolbox 返回的是整个 echarts4.x 中 toolbox 的配置内容，如 saveAsImage
 
   @author Witee<github.com/Witee>
   @date   2018-12-03

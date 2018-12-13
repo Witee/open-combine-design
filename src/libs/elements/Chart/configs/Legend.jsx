@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Form, Radio } from 'antd';
 
 /**
-  Echarts 图例 配置项，受控组件
+  echarts 图例 配置项，受控组件
 
-  Legend 返回的是整个 Echarts4.x 中 legend 的配置内容
+  Legend 返回的是整个 echarts4.x 中 legend 的配置内容
 
   @author Witee<github.com/Witee>
   @date   2018-12-04

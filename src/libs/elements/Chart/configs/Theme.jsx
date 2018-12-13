@@ -4,7 +4,7 @@ import { Form, Radio } from 'antd';
 import { TwitterPicker } from 'react-color';
 
 /**
-  Echarts 主题、背景色 配置项，受控组件
+  echarts 主题、背景色 配置项，受控组件
 
   @author Witee<github.com/Witee>
   @date   2018-12-03

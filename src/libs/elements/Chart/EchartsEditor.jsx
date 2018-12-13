@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Form, Radio, Input, Icon, Tooltip, Popover, InputNumber, Checkbox } from 'antd';
-import ReactEcharts from 'echarts-for-react';
+import ReactECharts from 'echarts-for-react';
 import { TwitterPicker } from 'react-color';
 import { table as tableUtils } from 'open-js-tools';
 import PlaceHolder from '../Placeholder';
@@ -10,7 +10,7 @@ import help from './images';
 import './style.css';
 
 /**
-  EchartsEditor 是可编辑 echarts 图表配置的组件
+  EChartsEditor 是可编辑 echarts 图表配置的组件
   左侧编辑，右上侧显示，右下侧可以使用表格、文本方式直接编辑数据
 
   参数 dataSource 的第一列将作为 X 或 Y 轴的数据源；第一行为表头；
@@ -22,7 +22,7 @@ import './style.css';
 
 const colors = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];
 
-class EchartsEditor extends React.Component {
+class EChartsEditor extends React.Component {
   /**
     注意： 目前可配置项有 18 项，如果有变化，需要修改
       constructor componentWillReceiveProps handleConfigChange
@@ -541,7 +541,7 @@ class EchartsEditor extends React.Component {
       style,
       configStyle,
       DataEditorParams,
-      ReactEchartsParams,
+      ReactEChartsParams,
     } = this.props;
     const {
       title,
@@ -797,11 +797,11 @@ class EchartsEditor extends React.Component {
         <Col span={editable ? 16 : 24}>
           {_.get(filteredDataSource, 0, []).length >= 3
             ? (
-              <ReactEcharts
+              <ReactECharts
                 {..._.assign(
                   { option },
-                  ReactEchartsParams,
-                  { style: { height: `${chartHeight}px` } } // 覆盖 ReactEchartsParams 中高度的设置
+                  ReactEChartsParams,
+                  { style: { height: `${chartHeight}px` } } // 覆盖 ReactEChartsParams 中高度的设置
                 )}
               />
             )
@@ -831,14 +831,14 @@ class EchartsEditor extends React.Component {
 }
 
 
-EchartsEditor.propTypes = {
+EChartsEditor.propTypes = {
   editable: PropTypes.bool,
   onChange: PropTypes.func,
   style: PropTypes.object,
   configStyle: PropTypes.object,
   dataSource: PropTypes.arrayOf(PropTypes.array),
   originData: PropTypes.arrayOf(PropTypes.array),
-  ReactEchartsParams: PropTypes.object,
+  ReactEChartsParams: PropTypes.object,
   DataEditorParams: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
@@ -860,14 +860,14 @@ EchartsEditor.propTypes = {
   displaySaveButton: PropTypes.bool,
 };
 
-EchartsEditor.defaultProps = {
+EChartsEditor.defaultProps = {
   editable: true,
   onChange: undefined,
   style: {},
   configStyle: { height: '40rem', overflow: 'scroll', padding: '0 0.8rem 0 0', backgroundColor: '#f7f7f7', borderRadius: '4px' },
   dataSource: [[]],
   originData: undefined,
-  ReactEchartsParams: { notMerge: true, style: { height: '35em' } },
+  ReactEChartsParams: { notMerge: true, style: { height: '35em' } },
   DataEditorParams: {},
   title: '图表标题',
   subtitle: '副标题',
@@ -889,4 +889,4 @@ EchartsEditor.defaultProps = {
   displaySaveButton: true,
 };
 
-export default EchartsEditor;
+export default EChartsEditor;

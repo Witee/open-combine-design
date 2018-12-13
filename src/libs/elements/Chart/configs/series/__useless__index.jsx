@@ -4,7 +4,7 @@ import Pie from './Pie';
 import WordCloud from './WordCloud';
 
 /**
-  Echarts 系列配置项选择器，只支持 pie、wordCloud
+  echarts 系列配置项选择器，只支持 pie、wordCloud
 
   series 只支持仅有一个对象的格式，即 series = [{type: 'pie|wordCloud'}]
 

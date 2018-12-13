@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactEcharts from 'echarts-for-react';
+import ReactECharts from 'echarts-for-react';
 import { Row, Col, Form } from 'antd';
 import 'echarts-wordcloud';
 import 'echarts/theme/macarons.js';
@@ -69,7 +69,7 @@ const defaultConfigs = {
   @date   2018-12-05
   @update 2018-12-10
 */
-class EchartsWordCloud extends React.Component {
+class EChartsWordCloud extends React.Component {
   constructor(props) {
     super(props);
 
@@ -356,7 +356,7 @@ class EchartsWordCloud extends React.Component {
         )}
 
         <Col span={editable ? 16 : 24}>
-          <ReactEcharts
+          <ReactECharts
             option={this.getOption()}
             notMerge={false}
             lazyUpdate={false}
@@ -369,7 +369,7 @@ class EchartsWordCloud extends React.Component {
   }
 }
 
-EchartsWordCloud.propTypes = {
+EChartsWordCloud.propTypes = {
   editable: PropTypes.bool,
   style: PropTypes.object,
   configStyle: PropTypes.object,
@@ -385,7 +385,7 @@ EchartsWordCloud.propTypes = {
   onChange: PropTypes.func,
 };
 
-EchartsWordCloud.defaultProps = {
+EChartsWordCloud.defaultProps = {
   editable: true,
   style: {},
   configStyle: {},
@@ -401,4 +401,4 @@ EchartsWordCloud.defaultProps = {
   onChange: undefined,
 };
 
-export default EchartsWordCloud;
+export default EChartsWordCloud;

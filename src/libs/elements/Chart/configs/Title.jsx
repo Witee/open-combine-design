@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Form, Radio, Input } from 'antd';
 
 /**
-  Echarts 标题 配置项
+  echarts 标题 配置项
 
-  Title 返回的是整个 Echarts4.x 中 title 的配置内容
+  Title 返回的是整个 echarts4.x 中 title 的配置内容
 
   @author Witee<github.com/Witee>
   @date   2018-12-03

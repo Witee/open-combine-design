@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactEcharts from 'echarts-for-react';
+import ReactECharts from 'echarts-for-react';
 
 /**
   基于 EChart 的常用图表 - 基础
@@ -10,7 +10,7 @@ import ReactEcharts from 'echarts-for-react';
   @date   2018-07-05
 */
 
-const OCDReactEcharts = (props) => {
+const OCDReactECharts = (props) => {
   const {
     style,
     ...args
@@ -18,7 +18,7 @@ const OCDReactEcharts = (props) => {
 
   return (
     <div style={style}>
-      <ReactEcharts
+      <ReactECharts
         {...args}
       />
     </div>
@@ -26,12 +26,12 @@ const OCDReactEcharts = (props) => {
 };
 
 
-OCDReactEcharts.propTypes = {
+OCDReactECharts.propTypes = {
   style: PropTypes.object,
 };
 
-OCDReactEcharts.defaultProps = {
+OCDReactECharts.defaultProps = {
   style: {},
 };
 
-export default OCDReactEcharts;
+export default OCDReactECharts;

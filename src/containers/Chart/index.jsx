@@ -21,7 +21,7 @@ const Chart = () => {
       ],
     },
     {
-      title: 'Chart.EchartsEditor 使用的API',
+      title: 'Chart.EChartsEditor 使用的API',
       doc: [
         ['editable', '有两种显示模式，编辑和只读，只读模式下只显示图表，不显示配置选项', 'bool', 'true'],
         ['onChange', '当加载完成、配置有变化时，将当前的参数回传', 'func', 'undefined'],
@@ -29,7 +29,7 @@ const Chart = () => {
         ['configStyle', '配置区域的样式', 'object', "{ height: '40rem', overflow: 'scroll', padding: '0 0.8rem 0 0', backgroundColor: '#f7f7f7', borderRadius: '4px' }"],
         ['dataSource', '列表，请提供表格形式(示例代码中的格式)的数据，dataSource[0]将作为"表头"，其余的作为它的值', 'array', '[[]]'],
         ['originData', 'DataEditor 还原按钮使用的数据，一般情况与 dataSource 相同，不设置无法使用还原功能', 'array', 'undefined'],
-        ['ReactEchartsParams [专用]', <div>单独给 ReactEcharts 传递的参数 (不可传递 option、theme), 详情访问 <a href="https://github.com/hustcc/echarts-for-react" target="_blank">ReactEcharts</a></div>, 'object', '{}'],
+        ['ReactEChartsParams [专用]', <div>单独给 ReactECharts 传递的参数 (不可传递 option、theme), 详情访问 <a href="https://github.com/hustcc/echarts-for-react" target="_blank">ReactECharts</a></div>, 'object', '{}'],
         ['DataEditorParams [专用]', <div>单独给 DataEditor 传递的参数 (不可传递 dataSource、onChange、tableSorter、tableFilters), 详情访问 <Link to="/app/components/data-editor">DataEditor</Link></div>, 'object', '{}'],
         ['title', '图表标题', 'string', '图表标题'],
         ['subtitle', '副标题', 'string', '副标题'],
@@ -47,7 +47,7 @@ const Chart = () => {
         ['dataRange', '动态设置数据范围，区别于 DataEditor 中对日期的过滤', 'string', 'total'],
         ['lastNDays', '数据范围的值，仅在设置 dataRange 为 "lastNDays" 生效', 'number', '7'],
         ['backgroundColor', '背景颜色', 'string', '#FFFFFF'],
-        ['chartHeight', '图表高度(px)，会覆盖掉 ReactEchartsParams 中关于 style.height 的设置', 'number', '420'],
+        ['chartHeight', '图表高度(px)，会覆盖掉 ReactEChartsParams 中关于 style.height 的设置', 'number', '420'],
         ['displaySaveButton', '是否显示保存为图片按钮', 'bool', 'true'],
       ],
     },
@@ -93,7 +93,7 @@ const Chart = () => {
     {
       title: '可编辑的折线、柱状图',
       example: (
-        <OCDChart.EchartsEditor
+        <OCDChart.EChartsEditor
           style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
           dataSource={dataSource}
           originData={originData}
@@ -111,7 +111,7 @@ const Chart = () => {
             tableParams: { size: 'small' },
           }}
           // eslint-disable-next-line
-          onChange={(configs) => { console.log('EchartsEditor: ', configs); }}
+          onChange={(configs) => { console.log('EChartsEditor: ', configs); }}
           filters={{ 日期: null, 平台: ['微博'], 声量: null }}
           sorter={{ field: '声量', order: 'descend' }}
           dataRange="lastNDays"
@@ -123,10 +123,10 @@ const Chart = () => {
     {
       title: '可编辑的饼图',
       example: (
-        <OCDChart.EchartsPie
+        <OCDChart.EChartsPie
           style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
           // eslint-disable-next-line
-          onChange={(configs) => { console.log('EchartsPie: ', configs); }}
+          onChange={(configs) => { console.log('EChartsPie: ', configs); }}
           title={{ text: '可编辑的饼图', left: 'center', top: 'middle' }}
           legend={{ data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'], orient: 'vertical', left: 'right', top: 'bottom' }}
           series={[
@@ -150,12 +150,21 @@ const Chart = () => {
       code: codeExamples.pie,
     },
     {
+      title: '饼图的全功能编辑器',
+      example: (
+        <OCDChart.EChartsPieFull
+          dataSource={dataSource}
+        />
+      ),
+      code: codeExamples.pieFull,
+    },
+    {
       title: '词云图',
       example: (
-        <OCDChart.EchartsWordCloud
+        <OCDChart.EChartsWordCloud
           style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
           // eslint-disable-next-line
-          onChange={(configs) => { console.log('EchartsWordCloud: ', configs); }}
+          onChange={(configs) => { console.log('EChartsWordCloud: ', configs); }}
           title={{ text: '词云图' }}
           series={[{ type: 'wordCloud' }]}
           dataset={{ source: wordCloudData }}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Input } from 'antd';
 
 /**
-  Echarts 高度 配置项
+  echarts 高度 配置项
 
   @author Witee<github.com/Witee>
   @date   2018-12-04
