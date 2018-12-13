@@ -10,6 +10,7 @@ import Placeholder from 'containers/Placeholder';
 import Popover from 'containers/Popover';
 import Chart from 'containers/Chart';
 import DataEditor from 'containers/DataEditor';
+import { version } from '../package.json';
 
 import './app.css';
 
@@ -142,7 +143,7 @@ class App extends React.Component {
 
         <Footer style={{ textAlign: 'center', backgroundColor: '#e8e9ea' }}>
           <strong>
-            版权所有 © Copyright AdMaster Inc. v1.0.0
+            v{version}
           </strong>
         </Footer>
       </Layout>
