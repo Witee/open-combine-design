@@ -8,6 +8,7 @@ import EChartsPie from './EChartsPie';
 import EChartsWordCloud from './EChartsWordCloud';
 
 import EChartsPieFull from './EChartsPieFull';
+import EChartsWordCloudFull from './EChartsWordCloudFull';
 
 import Title from './configs/Title';
 import Theme from './configs/Theme';
@@ -30,6 +31,7 @@ import SeriesWordCloud from './configs/series/WordCloud';
   - EChartsWordCloud 词云 配置器
 
   - EChartsPieFull 饼图的全功能配置器(包含数据编辑器)
+  - EChartsWordCloudFull 词云图的全功能配置器(包含数据编辑器)
 
   - 可自由组合的配置项
     - Title 标题
@@ -55,6 +57,7 @@ Chart.EChartsPie = EChartsPie;
 Chart.EChartsWordCloud = EChartsWordCloud;
 
 Chart.EChartsPieFull = EChartsPieFull;
+Chart.EChartsWordCloudFull = EChartsWordCloudFull;
 
 Chart.Title = Title;
 Chart.Theme = Theme;

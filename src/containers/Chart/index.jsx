@@ -172,6 +172,15 @@ const Chart = () => {
       ),
       code: codeExamples.wordCloud,
     },
+    {
+      title: '词云图的全功能编辑器',
+      example: (
+        <OCDChart.EChartsWordCloudFull
+          dataSource={wordCloudData}
+        />
+      ),
+      code: codeExamples.pieFull,
+    },
   ];
   return (
     <Content
