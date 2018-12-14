@@ -199,13 +199,14 @@ class EChartsPieFull extends React.Component {
       从 header 中分别找到选中 nameCol、dataCol 列的 index，
       将 body 聚合，同样名称作为 nameIndex 作为 key，dataIndex 作为 values，
       循环 values，计算每个 name 对应 data 的总和，最后将 headerName, headerDataName 作为表头，
-      生成最终 名称-数据 结构的数据:
+      生成最终 名称,数据 结构的数据:
         即: [
               [HEADER_NAME, HEADER_DATA_NAME],
               [NAME, DATA],
               ...
             ]
     */
+    let aggrData = _.cloneDeep(newDataSource);
     if (nameCol && bodyLength > 0 && dataCol && nameCol !== dataCol) {
       const nameIndex = _.indexOf(header, nameCol);
       const dataIndex = _.indexOf(header, dataCol);
@@ -213,16 +214,16 @@ class EChartsPieFull extends React.Component {
       if (nameIndex >= 0) {
         const grouppedData = _.groupBy(body, (b) => (_.get(b, nameIndex)));
 
-        newDataSource = _.map(grouppedData, (value, key) => {
+        aggrData = _.map(grouppedData, (value, key) => {
           const name = key;
-          const num = _.sumBy(value, (v) => (_.get(v, dataIndex, 0)));
+          const num = _.sumBy(value, (v) => (_.parseInt(_.get(v, dataIndex, 0))));
           return [name, num];
         });
 
         const headerName = _.get(header, nameIndex, null);
         const headerDataName = _.get(header, dataIndex, null);
 
-        newDataSource.unshift([headerName, headerDataName]);
+        aggrData.unshift([headerName, headerDataName]);
       }
     }
 
@@ -247,48 +248,38 @@ class EChartsPieFull extends React.Component {
           toolbox={toolbox}
           legend={legend}
           series={series}
-          dataset={{ source: newDataSource }}
+          dataset={{ source: aggrData }}
           onChange={this.handleChartChange}
         />
 
-        <Row gutter={8}>
-          <Col
-            span={4}
-            className="margin-top-bottom-middle"
-          >
-            <Button icon="reload" onClick={this.handleReloadClick}>恢复成原始数据</Button>
+        <Row className="toolbar">
+          <Col span={4} className="margin-top-bottom-middle tool">
+            <Button icon="reload" onClick={this.handleReloadClick}>重置</Button>
           </Col>
 
-          <Col
-            span={8}
-            style={{ display: 'flex', alignItems: 'center', paddingTop: '4px' }}
-            className="margin-top-bottom-middle"
-          >
-            <b>动态过滤:&nbsp;&nbsp;</b>
-            使用最后
-            <InputNumber
-              size="small"
-              min={0}
-              max={99}
-              style={{ width: '4em', margin: '0 4px' }}
-              value={useLastNDaysData}
-              disabled={nameCol || dataCol}
-              onChange={this.handleUseLastNDaysDataChange}
-            />
-            天数据
-            <Tooltip title="0 表示不过滤；先设置“动态过滤”再设置“名称列”、“数据列”">
-              <Icon type="question-circle-o" style={{ marginLeft: '0.3333rem' }} />
-            </Tooltip>
+          <Col span={8} className="margin-top-bottom-middle tool">
+            <div className="tool">
+              <b>动态过滤:&nbsp;&nbsp;</b>
+              使用最后
+              <InputNumber
+                size="small"
+                min={0}
+                max={99}
+                value={useLastNDaysData}
+                onChange={this.handleUseLastNDaysDataChange}
+              />
+              天数据
+              <Tooltip title="0 表示不过滤">
+                <Icon type="question-circle-o" className="icon" />
+              </Tooltip>
+            </div>
           </Col>
 
-          <Col
-            span={6}
-            className="margin-top-bottom-middle"
-          >
+          <Col span={6} className="margin-top-bottom-middle tool">
             <b>名称列:&nbsp;&nbsp;</b>
             <Select
               value={nameCol}
-              style={{ width: 160 }}
+              style={{ width: 140 }}
               disabled={!header}
               onChange={this.handleNameColSelect}
             >
@@ -298,14 +289,11 @@ class EChartsPieFull extends React.Component {
             </Select>
           </Col>
 
-          <Col
-            span={6}
-            className="margin-top-bottom-middle"
-          >
+          <Col span={6} className="margin-top-bottom-middle tool">
             <b>数据列:&nbsp;&nbsp;</b>
             <Select
               value={dataCol}
-              style={{ width: 160 }}
+              style={{ width: 140 }}
               disabled={!header}
               onChange={this.handleDataColSelect}
             >
@@ -314,7 +302,9 @@ class EChartsPieFull extends React.Component {
               ))}
             </Select>
           </Col>
+        </Row>
 
+        <Row gutter={8}>
           <Col span={12}>
             <DataEditor.Table
               size="small"

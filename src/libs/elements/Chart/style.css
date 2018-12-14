@@ -5,3 +5,28 @@
 form>.ant-form-item>.ant-form-item-label>label {
   font-weight: 500
 }
+
+/* 图表工具栏的样式 */
+.toolbar {
+  background-color: #f7f7f7;
+  margin: 0.3333rem 0;
+  padding: 0.3333rem 0.6666rem;
+  border-radius: 0.3333rem;
+}
+
+.toolbar>.tool {
+  height: 24px;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+.toolbar .tool>.icon {
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.toolbar .tool>.ant-input-number {
+  width: 4rem;
+  margin: 0 4px;
+}
