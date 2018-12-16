@@ -287,11 +287,21 @@ class EChartsLine extends React.Component {
       const legendData = _.get(newLegend, 'data', []);
       newSeries = _.map(legendData, (l) => {
         const originSeries = _.find(newSeries, (s) => (_.get(s, 'name', null) === l));
+        const xAxisType = _.get(newXAxis, 'type', 'category');
+        let x;
+        let y;
+        if (xAxisType === 'category') {
+          x = xColumn;
+          y = l;
+        } else {
+          x = l;
+          y = xColumn;
+        }
         return {
           name: l,
           type: _.get(originSeries, 'type', 'line'),
           color: _.get(originSeries, 'color', false),
-          encode: { x: xColumn, y: l },
+          encode: { x, y },
         };
       });
     }
@@ -324,6 +334,7 @@ class EChartsLine extends React.Component {
       series: newSeries,
       dataset: newDataset,
       tooltip: { show: true },
+      grid: { left: '12%' },
     };
 
     return (
