@@ -70,117 +70,117 @@ const Chart = () => {
   ];
   const originData = _.cloneDeep(dataSource);
   const codes = [
-    // {
-    //   title: '基本用法',
-    //   example: (
-    //     <OCDChart
-    //       style={{
-    //         minHeight: '20em',
-    //         width: '100%',
-    //         border: '1px solid #f6f8fa',
-    //         padding: '1em',
-    //       }}
-    //       title={<h2>演示图表</h2>}
-    //       descriptionStyle={{ backgroundColor: '#f9fbfe' }}
-    //       description="描述内容"
-    //       contentStyle={{ backgroundColor: '#f9fbfe', minHeight: '10em', padding: '1em' }}
-    //     >
-    //       <p>内容区域，例如可以显示文字图表等内容</p>
-    //     </OCDChart>
-    //   ),
-    //   code: codeExamples.base,
-    // },
-    // {
-    //   title: '可编辑的折线、柱状图',
-    //   example: (
-    //     <OCDChart.EChartsEditor
-    //       style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
-    //       dataSource={dataSource}
-    //       originData={originData}
-    //       // dataSource={[
-    //       //   ['日期', '声量'],
-    //       //   ['2018-07-20', 52872],
-    //       //   ['2018-07-21', 47381],
-    //       //   ['2018-07-22', 37072],
-    //       //   ['2018-07-23', 44665],
-    //       //   ['2018-07-24', 46858],
-    //       //   ['2018-07-25', 30272],
-    //       // ]}
-    //       DataEditorParams={{
-    //         title: '源数据',
-    //         tableParams: { size: 'small' },
-    //       }}
-    //       // eslint-disable-next-line
-    //       onChange={(configs) => { console.log('EChartsEditor: ', configs); }}
-    //       filters={{ 日期: null, 平台: ['微博'], 声量: null }}
-    //       sorter={{ field: '声量', order: 'descend' }}
-    //       dataRange="lastNDays"
-    //       lastNDays={3}
-    //     />
-    //   ),
-    //   code: codeExamples.editor,
-    // },
-    // {
-    //   title: '可编辑的饼图',
-    //   example: (
-    //     <OCDChart.EChartsPie
-    //       style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
-    //       // eslint-disable-next-line
-    //       onChange={(configs) => { console.log('EChartsPie: ', configs); }}
-    //       title={{ text: '可编辑的饼图', left: 'center', top: 'middle' }}
-    //       legend={{ data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'], orient: 'vertical', left: 'right', top: 'bottom' }}
-    //       series={[
-    //         {
-    //           type: 'pie',
-    //           radius: ['50%', '70%'],
-    //         },
-    //       ]}
-    //       dataset={{
-    //         source: [
-    //           ['浏览方式', '次数'],
-    //           ['直接访问', 335],
-    //           ['邮件营销', 310],
-    //           ['联盟广告', 234],
-    //           ['视频广告', 135],
-    //           ['搜索引擎', 1548],
-    //         ],
-    //       }}
-    //     />
-    //   ),
-    //   code: codeExamples.pie,
-    // },
-    // {
-    //   title: '饼图的全功能编辑器',
-    //   example: (
-    //     <OCDChart.EChartsPieFull
-    //       dataSource={dataSource}
-    //     />
-    //   ),
-    //   code: codeExamples.pieFull,
-    // },
-    // {
-    //   title: '词云图',
-    //   example: (
-    //     <OCDChart.EChartsWordCloud
-    //       style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
-    //       // eslint-disable-next-line
-    //       onChange={(configs) => { console.log('EChartsWordCloud: ', configs); }}
-    //       title={{ text: '词云图' }}
-    //       series={[{ type: 'wordCloud' }]}
-    //       dataset={{ source: wordCloudData }}
-    //     />
-    //   ),
-    //   code: codeExamples.wordCloud,
-    // },
-    // {
-    //   title: '词云图的全功能编辑器',
-    //   example: (
-    //     <OCDChart.EChartsWordCloudFull
-    //       dataSource={wordCloudData}
-    //     />
-    //   ),
-    //   code: codeExamples.pieFull,
-    // },
+    {
+      title: '基本用法',
+      example: (
+        <OCDChart
+          style={{
+            minHeight: '20em',
+            width: '100%',
+            border: '1px solid #f6f8fa',
+            padding: '1em',
+          }}
+          title={<h2>演示图表</h2>}
+          descriptionStyle={{ backgroundColor: '#f9fbfe' }}
+          description="描述内容"
+          contentStyle={{ backgroundColor: '#f9fbfe', minHeight: '10em', padding: '1em' }}
+        >
+          <p>内容区域，例如可以显示文字图表等内容</p>
+        </OCDChart>
+      ),
+      code: codeExamples.base,
+    },
+    {
+      title: '可编辑的折线、柱状图',
+      example: (
+        <OCDChart.EChartsEditor
+          style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
+          dataSource={dataSource}
+          originData={originData}
+          // dataSource={[
+          //   ['日期', '声量'],
+          //   ['2018-07-20', 52872],
+          //   ['2018-07-21', 47381],
+          //   ['2018-07-22', 37072],
+          //   ['2018-07-23', 44665],
+          //   ['2018-07-24', 46858],
+          //   ['2018-07-25', 30272],
+          // ]}
+          DataEditorParams={{
+            title: '源数据',
+            tableParams: { size: 'small' },
+          }}
+          // eslint-disable-next-line
+          onChange={(configs) => { console.log('EChartsEditor: ', configs); }}
+          filters={{ 日期: null, 平台: ['微博'], 声量: null }}
+          sorter={{ field: '声量', order: 'descend' }}
+          dataRange="lastNDays"
+          lastNDays={3}
+        />
+      ),
+      code: codeExamples.editor,
+    },
+    {
+      title: '可编辑的饼图',
+      example: (
+        <OCDChart.EChartsPie
+          style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
+          // eslint-disable-next-line
+          onChange={(configs) => { console.log('EChartsPie: ', configs); }}
+          title={{ text: '可编辑的饼图', left: 'center', top: 'middle' }}
+          legend={{ data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'], orient: 'vertical', left: 'right', top: 'bottom' }}
+          series={[
+            {
+              type: 'pie',
+              radius: ['50%', '70%'],
+            },
+          ]}
+          dataset={{
+            source: [
+              ['浏览方式', '次数'],
+              ['直接访问', 335],
+              ['邮件营销', 310],
+              ['联盟广告', 234],
+              ['视频广告', 135],
+              ['搜索引擎', 1548],
+            ],
+          }}
+        />
+      ),
+      code: codeExamples.pie,
+    },
+    {
+      title: '饼图的全功能编辑器',
+      example: (
+        <OCDChart.EChartsPieFull
+          dataSource={dataSource}
+        />
+      ),
+      code: codeExamples.pieFull,
+    },
+    {
+      title: '词云图',
+      example: (
+        <OCDChart.EChartsWordCloud
+          style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
+          // eslint-disable-next-line
+          onChange={(configs) => { console.log('EChartsWordCloud: ', configs); }}
+          title={{ text: '词云图' }}
+          series={[{ type: 'wordCloud' }]}
+          dataset={{ source: wordCloudData }}
+        />
+      ),
+      code: codeExamples.wordCloud,
+    },
+    {
+      title: '词云图的全功能编辑器',
+      example: (
+        <OCDChart.EChartsWordCloudFull
+          dataSource={wordCloudData}
+        />
+      ),
+      code: codeExamples.pieFull,
+    },
     {
       title: '新版可编辑的折线、柱状图',
       example: (

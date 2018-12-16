@@ -8,7 +8,6 @@
     "start": "NODE_ENV=development && node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "upload": "npm run build && rsync -avz --delete build/ test@192.168.4.191::open_combine_design",
     "pub": "npm version patch && npm run packlibs && npm publish"
   },
   "repository": {
