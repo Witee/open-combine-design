@@ -4,6 +4,7 @@ import ReactECharts from './ReactECharts';
 
 import EChartsEditor from './EChartsEditor';
 
+import EChartsLine from './EChartsLine';
 import EChartsPie from './EChartsPie';
 import EChartsWordCloud from './EChartsWordCloud';
 
@@ -27,6 +28,7 @@ import SeriesWordCloud from './configs/series/WordCloud';
 
   - EChartsEditor 标准的使用方法，将所有的配置项组合，编辑 echarts 图表
 
+  - EChartsLine 折线、柱状 图配置器
   - EChartsPie echarts4.x 饼图配置器
   - EChartsWordCloud 词云 配置器
 
@@ -53,6 +55,7 @@ Chart.ReactECharts = ReactECharts;
 
 Chart.EChartsEditor = EChartsEditor;
 
+Chart.EChartsLine = EChartsLine;
 Chart.EChartsPie = EChartsPie;
 Chart.EChartsWordCloud = EChartsWordCloud;
 

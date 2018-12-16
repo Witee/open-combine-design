@@ -9,7 +9,7 @@ import Theme from './configs/Theme';
 import Height from './configs/Height';
 import Toolbox from './configs/Toolbox';
 // import Legend from './configs/Legend';
-import WordCloud from './configs/series/WordCloud';
+import SeriesWordCloud from './configs/series/WordCloud';
 import Baseline from '../Baseline';
 
 const colors = [
@@ -345,7 +345,7 @@ class EChartsWordCloud extends React.Component {
                 onChange={this.onLegendChange}
               /> */}
 
-              <WordCloud
+              <SeriesWordCloud
                 series={_.cloneDeep(series)}
                 onChange={this.onSeriesChange}
               />

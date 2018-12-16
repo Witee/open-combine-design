@@ -20,8 +20,9 @@ class Legend extends React.Component {
 
     if (onChange) {
       const newLegend = {};
-
-      if (type === 'orient') {
+      if (type === 'column') {
+        _.set(newLegend, 'column', value);
+      } else if (type === 'orient') {
         _.set(newLegend, 'orient', value);
       } else if (type === 'left') {
         _.set(newLegend, 'left', value);
@@ -34,8 +35,9 @@ class Legend extends React.Component {
   }
 
   render() {
-    const { label, legend, layout } = this.props;
+    const { label, legend, header, layout } = this.props;
 
+    const column = _.get(legend, 'column', undefined);
     const orient = _.get(legend, 'orient', 'horizontal');
     const left = _.get(legend, 'left', 'center');
     const top = _.get(legend, 'top', 'top');
@@ -43,6 +45,12 @@ class Legend extends React.Component {
     return (
       <Form.Item {...layout} label={label}>
         <Form.Item {...layout}></Form.Item> {/* 占位 */}
+
+        <Form.Item {...layout} label="取值">
+          <Radio.Group value={column} onChange={(evt) => this.change('column', evt)}>
+            {_.map(header, (h) => (<Radio key={h} value={h}>{h}</Radio>))}
+          </Radio.Group>
+        </Form.Item>
 
         <Form.Item {...layout} label="排列">
           <Radio.Group value={orient} onChange={(evt) => this.change('orient', evt)}>
@@ -75,6 +83,7 @@ class Legend extends React.Component {
 Legend.propTypes = {
   label: PropTypes.string,
   legend: PropTypes.object,
+  header: PropTypes.array, // 图例可选列表
   layout: PropTypes.object,
   onChange: PropTypes.func,
 };
@@ -82,6 +91,7 @@ Legend.propTypes = {
 Legend.defaultProps = {
   label: '图例',
   legend: {},
+  header: [],
   layout: {
     labelCol: {
       xs: { span: 24 },
