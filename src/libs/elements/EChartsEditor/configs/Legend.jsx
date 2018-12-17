@@ -46,11 +46,15 @@ class Legend extends React.Component {
       <Form.Item {...layout} label={label}>
         <Form.Item {...layout}></Form.Item> {/* 占位 */}
 
-        <Form.Item {...layout} label="取值">
-          <Radio.Group value={column} onChange={(evt) => this.change('column', evt)}>
-            {_.map(header, (h) => (<Radio key={h} value={h}>{h}</Radio>))}
-          </Radio.Group>
-        </Form.Item>
+        {!_.isUndefined(header)
+          && (
+            <Form.Item {...layout} label="取值">
+              <Radio.Group value={column} onChange={(evt) => this.change('column', evt)}>
+                {_.map(header, (h) => (<Radio key={h} value={h}>{h}</Radio>))}
+              </Radio.Group>
+            </Form.Item>
+          )
+        }
 
         <Form.Item {...layout} label="排列">
           <Radio.Group value={orient} onChange={(evt) => this.change('orient', evt)}>
@@ -91,7 +95,7 @@ Legend.propTypes = {
 Legend.defaultProps = {
   label: '图例',
   legend: {},
-  header: [],
+  header: undefined,
   layout: {
     labelCol: {
       xs: { span: 24 },

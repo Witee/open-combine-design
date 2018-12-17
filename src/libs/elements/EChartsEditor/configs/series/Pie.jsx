@@ -27,11 +27,7 @@ class Pie extends React.Component {
       */
       const newSeries = { type: 'pie' };
 
-      if (type === 'name') {
-        if (_.get(value, 'length', null)) {
-          _.set(newSeries, 'name', value);
-        }
-      } else if (type === 'radius-in') {
+      if (type === 'radius-in') {
         if (numberReg.test(value) || percentReg.test(value)) {
           const originRadius = _.get(originFirstSeries, 'radius', []);
           const newRadius = _.set(originRadius, 0, value);
@@ -63,7 +59,6 @@ class Pie extends React.Component {
     */
     const firstSeries = _.get(series, 0, {});
 
-    // const name = _.get(firstSeries, 'name', '');
     const sizeIn = _.get(_.get(firstSeries, 'radius', []), 0, undefined);
     const sizeOut = _.get(_.get(firstSeries, 'radius', []), 1, undefined);
     const formatter = _.get(firstSeries, 'label.formatter', '{b}');
@@ -92,19 +87,10 @@ class Pie extends React.Component {
 
     return (
       <Form.Item {...layout} label={label}>
-        <Form.Item {...layout}></Form.Item> {/* 占位 */}
-
-        {/* <Form.Item {...layout} label="名称">
-          <Input
-          placeholder="系列名称"
-          defaultValue={name}
-          onBlur={(evt) => this.change('name', evt)}
-          onPressEnter={(evt) => this.change('name', evt)}
-        />
-        </Form.Item> */}
+        <Form.Item {...layout}></Form.Item>
 
         <Form.Item {...layout} label={<Tooltip placement="topLeft" title={radiusTooltip}>半径 <Icon type="question-circle-o" /></Tooltip>}>
-          <Form.Item {...layout}></Form.Item> {/* 占位 */}
+          <Form.Item {...layout}></Form.Item>
           <Form.Item {...layout} label="内">
             <Input
               size="small"
