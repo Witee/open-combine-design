@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Button, Select, Tooltip, Icon, InputNumber } from 'antd';
+import { Row, Col, Button, Tooltip, Icon, InputNumber } from 'antd';
 import { table } from 'open-js-tools';
 import LineBar from './LineBar';
 import DataEditor from '../DataEditor';
+import './style.css';
 
 
 /**
@@ -13,7 +14,6 @@ import DataEditor from '../DataEditor';
   - 饼图在使用数据时在 render 与 return 之间要经过以下处理
     - fiters sorter
     - useLastNDaysData 只保留最后N天数据
-    - nameCol dataCol 指定饼图的名称与数据列，并对列进行聚合
     - 图表使用的数据与数据编辑器使用的图不同
 
     @author Witee<github.com/Witee>
@@ -28,8 +28,6 @@ class LineBarFull extends React.Component {
       useLastNDaysData,
       filters,
       sorter,
-      nameCol,
-      dataCol,
       dataSource,
     } = props;
 
@@ -42,8 +40,6 @@ class LineBarFull extends React.Component {
       useLastNDaysData,
       filters,
       sorter,
-      nameCol,
-      dataCol,
       dataSource,
     };
   }
@@ -53,8 +49,6 @@ class LineBarFull extends React.Component {
       useLastNDaysData,
       filters,
       sorter,
-      nameCol,
-      dataCol,
       dataSource,
     } = nextProps;
 
@@ -62,8 +56,6 @@ class LineBarFull extends React.Component {
       useLastNDaysData,
       filters,
       sorter,
-      nameCol,
-      dataCol,
       dataSource,
     });
   }
@@ -93,16 +85,12 @@ class LineBarFull extends React.Component {
     this.setState({
       filters: null,
       sorter: null,
-      nameCol: null,
-      dataCol: null,
       useLastNDaysData: 0,
       dataSource: this.originData,
     });
     this.submitConfig({
       filters: null,
       sorter: null,
-      nameCol: null,
-      dataCol: null,
       useLastNDaysData: 0,
     });
   }
@@ -113,22 +101,6 @@ class LineBarFull extends React.Component {
   handleUseLastNDaysDataChange = (value) => {
     this.setState({ useLastNDaysData: value });
     this.submitConfig({ useLastNDaysData: value });
-  }
-
-  /**
-    名称列
-  */
-  handleNameColSelect = (value) => {
-    this.setState({ nameCol: value });
-    this.submitConfig({ nameCol: value });
-  }
-
-  /**
-    数据列
-  */
-  handleDataColSelect = (value) => {
-    this.setState({ dataCol: value });
-    this.submitConfig({ dataCol: value });
   }
 
   /**
@@ -153,8 +125,6 @@ class LineBarFull extends React.Component {
       useLastNDaysData,
       filters,
       sorter,
-      nameCol,
-      dataCol,
       dataSource,
     } = this.state;
 
@@ -179,7 +149,7 @@ class LineBarFull extends React.Component {
 
     const header = _.get(newDataSource, 0, null);
     let body = _.slice(newDataSource, 1);
-    const bodyLength = _.get(body, 'length', 0);
+
     /**
       只保留最后N天数据
 
@@ -193,40 +163,6 @@ class LineBarFull extends React.Component {
         const tmpData = _.cloneDeep(body);
         tmpData.unshift(header);
         newDataSource = _.cloneDeep(tmpData);
-      }
-    }
-
-    /**
-      将指定的列聚合，每个名称列的名称只保留一个，数据相加，用于只需要一列名称、一列数据的图表，如饼图、词云图
-
-      从 header 中分别找到选中 nameCol、dataCol 列的 index，
-      将 body 聚合，同样名称作为 nameIndex 作为 key，dataIndex 作为 values，
-      循环 values，计算每个 name 对应 data 的总和，最后将 headerName, headerDataName 作为表头，
-      生成最终 名称,数据 结构的数据:
-        即: [
-              [HEADER_NAME, HEADER_DATA_NAME],
-              [NAME, DATA],
-              ...
-            ]
-    */
-    let aggrData = _.cloneDeep(newDataSource);
-    if (nameCol && bodyLength > 0 && dataCol && nameCol !== dataCol) {
-      const nameIndex = _.indexOf(header, nameCol);
-      const dataIndex = _.indexOf(header, dataCol);
-
-      if (nameIndex >= 0) {
-        const grouppedData = _.groupBy(body, (b) => (_.get(b, nameIndex)));
-
-        aggrData = _.map(grouppedData, (value, key) => {
-          const name = key;
-          const num = _.sumBy(value, (v) => (_.parseInt(_.get(v, dataIndex, 0))));
-          return [name, num];
-        });
-
-        const headerName = _.get(header, nameIndex, null);
-        const headerDataName = _.get(header, dataIndex, null);
-
-        aggrData.unshift([headerName, headerDataName]);
       }
     }
 
@@ -253,7 +189,7 @@ class LineBarFull extends React.Component {
           xAxis={xAxis}
           yAxis={yAxis}
           series={series}
-          dataset={{ source: aggrData }} // 注意图表使用的数据与数据编辑器使用的数据不同
+          dataset={{ source: newDataSource }}
           onChange={this.handleChartChange}
         />
 
@@ -278,34 +214,6 @@ class LineBarFull extends React.Component {
                 <Icon type="question-circle-o" className="icon" />
               </Tooltip>
             </div>
-          </Col>
-
-          <Col span={6} className="margin-top-bottom-middle tool">
-            <b>名称列:&nbsp;&nbsp;</b>
-            <Select
-              value={nameCol}
-              style={{ width: 140 }}
-              disabled={!header}
-              onChange={this.handleNameColSelect}
-            >
-              {_.map(header, (h) => (
-                <Select.Option key={h} value={h}>{h}</Select.Option>
-              ))}
-            </Select>
-          </Col>
-
-          <Col span={6} className="margin-top-bottom-middle tool">
-            <b>数据列:&nbsp;&nbsp;</b>
-            <Select
-              value={dataCol}
-              style={{ width: 140 }}
-              disabled={!header}
-              onChange={this.handleDataColSelect}
-            >
-              {_.map(header, (h) => (
-                <Select.Option key={h} value={h}>{h}</Select.Option>
-              ))}
-            </Select>
           </Col>
         </Row>
 
@@ -347,8 +255,6 @@ LineBarFull.propTypes = {
   filters: PropTypes.object,
   sorter: PropTypes.object,
   useLastNDaysData: PropTypes.number,
-  nameCol: PropTypes.string, // 饼图 需要指定名称列与数据列
-  dataCol: PropTypes.string, // 饼图 需要指定名称列与数据列
   dataSource: PropTypes.array,
   onChange: PropTypes.func,
 };
@@ -366,8 +272,6 @@ LineBarFull.defaultProps = {
   filters: undefined,
   sorter: undefined,
   useLastNDaysData: 0, // 0 表示使用所有数据
-  nameCol: undefined,
-  dataCol: undefined,
   dataSource: [[]],
   onChange: undefined,
 };

@@ -4,8 +4,8 @@ import { Row, Col, Button, Select, Tooltip, Icon, InputNumber } from 'antd';
 import { table } from 'open-js-tools';
 import WordCloud from './WordCloud';
 import DataEditor from '../DataEditor';
+import './style.css';
 
-// 未完成
 
 /**
   带数据编辑的词云图专用编辑器
