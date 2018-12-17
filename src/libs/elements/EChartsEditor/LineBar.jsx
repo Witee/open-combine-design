@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactECharts from 'echarts-for-react';
 import { Row, Col, Form } from 'antd';
 import { table } from 'open-js-tools';
+import ReactECharts from './ReactECharts';
 import Title from './configs/Title';
 import Theme from './configs/Theme';
 import Height from './configs/Height';
@@ -45,7 +45,7 @@ import Baseline from '../Baseline';
   @author Witee<github.com/Witee>
   @date   2018-12-14
 */
-class EChartsLine extends React.Component {
+class LineBarEditor extends React.Component {
   constructor(props) {
     super(props);
 
@@ -400,10 +400,8 @@ class EChartsLine extends React.Component {
         <Col span={editable ? 16 : 24}>
           <ReactECharts
             option={option}
-            notMerge={false}
-            lazyUpdate={false}
             theme={theme}
-            style={{ height: `${chartHeight}px` }}
+            height={chartHeight}
           />
         </Col>
       </Row>
@@ -411,7 +409,7 @@ class EChartsLine extends React.Component {
   }
 }
 
-EChartsLine.propTypes = {
+LineBarEditor.propTypes = {
   editable: PropTypes.bool,
   style: PropTypes.object,
   configStyle: PropTypes.object,
@@ -429,7 +427,7 @@ EChartsLine.propTypes = {
   onChange: PropTypes.func,
 };
 
-EChartsLine.defaultProps = {
+LineBarEditor.defaultProps = {
   editable: true,
   style: {},
   configStyle: {},
@@ -447,4 +445,4 @@ EChartsLine.defaultProps = {
   onChange: undefined,
 };
 
-export default EChartsLine;
+export default LineBarEditor;

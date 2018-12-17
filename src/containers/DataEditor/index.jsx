@@ -4,7 +4,7 @@ import Content from 'components/Content';
 import codeExamples from './codeExamples';
 
 
-class Chart extends React.Component {
+class Editor extends React.Component {
   constructor(props) {
     super(props);
     const dataSource = [
@@ -119,4 +119,4 @@ class Chart extends React.Component {
   }
 }
 
-export default Chart;
+export default Editor;

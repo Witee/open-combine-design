@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactECharts from 'echarts-for-react';
 import { Row, Col, Form } from 'antd';
+import ReactECharts from './ReactECharts';
 import Title from './configs/Title';
 import Theme from './configs/Theme';
 import Height from './configs/Height';
@@ -44,7 +44,7 @@ const colors = [
   @date   2018-12-05
   @update 2018-12-07
 */
-class EChartsPie extends React.Component {
+class PieEditor extends React.Component {
   constructor(props) {
     super(props);
 
@@ -269,10 +269,8 @@ class EChartsPie extends React.Component {
         <Col span={editable ? 16 : 24}>
           <ReactECharts
             option={this.getOption()}
-            notMerge={false}
-            lazyUpdate={false}
             theme={theme}
-            style={{ height: `${chartHeight}px` }}
+            height={chartHeight}
           />
         </Col>
       </Row>
@@ -280,7 +278,7 @@ class EChartsPie extends React.Component {
   }
 }
 
-EChartsPie.propTypes = {
+PieEditor.propTypes = {
   editable: PropTypes.bool,
   style: PropTypes.object,
   configStyle: PropTypes.object,
@@ -296,7 +294,7 @@ EChartsPie.propTypes = {
   onChange: PropTypes.func,
 };
 
-EChartsPie.defaultProps = {
+PieEditor.defaultProps = {
   editable: true,
   style: {},
   configStyle: {},
@@ -312,4 +310,4 @@ EChartsPie.defaultProps = {
   onChange: undefined,
 };
 
-export default EChartsPie;
+export default PieEditor;

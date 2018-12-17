@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Button, Select, Tooltip, Icon, InputNumber } from 'antd';
 import { table } from 'open-js-tools';
-import EChartsPie from './EChartsPie';
+import LineBar from './LineBar';
 import DataEditor from '../DataEditor';
 
 
 /**
-  带数据编辑的饼图专用编辑器
+  带数据编辑的 折线/柱状图 专用编辑器
 
   - 首次传递的 dataSource 将认为是原始数据，恢复时、DataEditor.Table 使用，所以 dataSource 为空时不应该渲染此组件
   - 饼图在使用数据时在 render 与 return 之间要经过以下处理
@@ -17,10 +17,10 @@ import DataEditor from '../DataEditor';
     - 图表使用的数据与数据编辑器使用的图不同
 
     @author Witee<github.com/Witee>
-    @date   2018-12-13
+    @date   2018-12-17
 */
 
-class EChartsPieFull extends React.Component {
+class LineBarFull extends React.Component {
   constructor(props) {
     super(props);
 
@@ -165,6 +165,8 @@ class EChartsPieFull extends React.Component {
       chartHeight,
       toolbox,
       legend,
+      xAxis,
+      yAxis,
       series,
     } = this.props;
 
@@ -241,13 +243,15 @@ class EChartsPieFull extends React.Component {
 
     return (
       <div>
-        <EChartsPie
+        <LineBar
           title={title}
           theme={theme}
           backgroundColor={backgroundColor}
           chartHeight={chartHeight}
           toolbox={toolbox}
           legend={legend}
+          xAxis={xAxis}
+          yAxis={yAxis}
           series={series}
           dataset={{ source: aggrData }} // 注意图表使用的数据与数据编辑器使用的数据不同
           onChange={this.handleChartChange}
@@ -330,13 +334,15 @@ class EChartsPieFull extends React.Component {
   }
 }
 
-EChartsPieFull.propTypes = {
+LineBarFull.propTypes = {
   title: PropTypes.object,
   theme: PropTypes.oneOf(['default', 'dark']), // 默认已注册的主题
   backgroundColor: PropTypes.string,
   chartHeight: PropTypes.number,
   toolbox: PropTypes.object,
   legend: PropTypes.object,
+  xAxis: PropTypes.object,
+  yAxis: PropTypes.object,
   series: PropTypes.arrayOf(PropTypes.object),
   filters: PropTypes.object,
   sorter: PropTypes.object,
@@ -347,14 +353,16 @@ EChartsPieFull.propTypes = {
   onChange: PropTypes.func,
 };
 
-EChartsPieFull.defaultProps = {
+LineBarFull.defaultProps = {
   title: undefined,
   theme: 'default',
   backgroundColor: '#FFFFFF',
   chartHeight: 420,
   toolbox: { feature: { saveAsImage: { title: '下载', pixelRatio: 5 } }, top: '10%' },
   legend: undefined,
-  series: [{ type: 'pie' }],
+  xAxis: undefined,
+  yAxis: undefined,
+  series: undefined,
   filters: undefined,
   sorter: undefined,
   useLastNDaysData: 0, // 0 表示使用所有数据
@@ -364,4 +372,4 @@ EChartsPieFull.defaultProps = {
   onChange: undefined,
 };
 
-export default EChartsPieFull;
+export default LineBarFull;

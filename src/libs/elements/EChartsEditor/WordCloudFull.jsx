@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Button, Select, Tooltip, Icon, InputNumber } from 'antd';
 import { table } from 'open-js-tools';
-import EChartsWordCloud from './EChartsWordCloud';
+import WordCloud from './WordCloud';
 import DataEditor from '../DataEditor';
 
 // 未完成
@@ -21,7 +21,7 @@ import DataEditor from '../DataEditor';
     @date   2018-12-14
 */
 
-class EChartsWordCloudFull extends React.Component {
+class WordCloudFullEditor extends React.Component {
   constructor(props) {
     super(props);
 
@@ -242,7 +242,7 @@ class EChartsWordCloudFull extends React.Component {
 
     return (
       <div>
-        <EChartsWordCloud
+        <WordCloud
           title={title}
           theme={theme}
           backgroundColor={backgroundColor}
@@ -331,7 +331,7 @@ class EChartsWordCloudFull extends React.Component {
   }
 }
 
-EChartsWordCloudFull.propTypes = {
+WordCloudFullEditor.propTypes = {
   title: PropTypes.object,
   theme: PropTypes.oneOf(['default', 'dark']), // 默认已注册的主题
   backgroundColor: PropTypes.string,
@@ -348,7 +348,7 @@ EChartsWordCloudFull.propTypes = {
   onChange: PropTypes.func,
 };
 
-EChartsWordCloudFull.defaultProps = {
+WordCloudFullEditor.defaultProps = {
   title: undefined,
   theme: 'default',
   backgroundColor: '#FFFFFF',
@@ -365,4 +365,4 @@ EChartsWordCloudFull.defaultProps = {
   onChange: undefined,
 };
 
-export default EChartsWordCloudFull;
+export default WordCloudFullEditor;
