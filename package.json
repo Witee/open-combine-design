@@ -79,7 +79,7 @@
     "echarts-wordcloud": "^1.1.3",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
-    "open-js-tools": "^1.0.8",
+    "open-js-tools": "^1.0.9",
     "react": "^15.6.2",
     "react-color": "^2.14.1",
     "react-dom": "^15.6.2",
