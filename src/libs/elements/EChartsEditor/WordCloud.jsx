@@ -80,7 +80,6 @@ class WordCloudEditor extends React.Component {
       title,
       backgroundColor,
       toolbox,
-      // legend,
       series,
       dataset,
     } = props;
@@ -99,7 +98,6 @@ class WordCloudEditor extends React.Component {
       title,
       backgroundColor,
       toolbox,
-      // legend,
       series: [_.assign(defaultConfigs, newSeries[0])],
       dataset: newDataset,
     };
@@ -119,7 +117,6 @@ class WordCloudEditor extends React.Component {
       backgroundColor,
       chartHeight,
       toolbox,
-      // legend,
       series,
       dataset,
     } = this.props;
@@ -134,7 +131,6 @@ class WordCloudEditor extends React.Component {
     if (!_.isEqual(backgroundColor, nextProps.backgroundColor)) { needUpdate.backgroundColor = nextProps.backgroundColor; }
     if (!_.isEqual(chartHeight, nextProps.chartHeight)) { needUpdate.chartHeight = nextProps.chartHeight; }
     if (!_.isEqual(toolbox, nextProps.toolbox)) { needUpdate.toolbox = nextProps.toolbox; }
-    // if (!_.isEqual(legend, nextProps.legend)) { needUpdate.legend = nextProps.legend; }
     if (!_.isEqual(newSeries, nextSeries)) { needUpdate.series = nextSeries; }
     if (!_.isEqual(newDataset, nextDataset)) { needUpdate.dataset = nextDataset; }
 
@@ -164,11 +160,6 @@ class WordCloudEditor extends React.Component {
     this.handleConfigChange({ toolbox });
   };
 
-  // onLegendChange = (legend) => {
-  //   this.setState({ legend });
-  //   this.handleConfigChange({ legend });
-  // };
-
   onSeriesChange = (series) => {
     this.setState({ series });
     this.handleConfigChange({ series });
@@ -179,7 +170,6 @@ class WordCloudEditor extends React.Component {
       title,
       backgroundColor,
       toolbox,
-      // legend,
       series,
       dataset,
     } = this.state;
@@ -189,9 +179,9 @@ class WordCloudEditor extends React.Component {
       backgroundColor,
       title,
       toolbox,
-      // legend,
       series,
       dataset,
+      tooltip: { show: true },
     };
   }
 
@@ -208,7 +198,6 @@ class WordCloudEditor extends React.Component {
         backgroundColor,
         chartHeight,
         toolbox,
-        // legend,
         series,
         dataset,
       } = this.state;
@@ -221,7 +210,6 @@ class WordCloudEditor extends React.Component {
         backgroundColor,
         chartHeight,
         toolbox,
-        // legend,
         series,
         dataset,
       };
@@ -298,7 +286,6 @@ class WordCloudEditor extends React.Component {
       backgroundColor,
       chartHeight,
       toolbox,
-      // legend,
       series,
     } = this.state;
 
@@ -340,11 +327,6 @@ class WordCloudEditor extends React.Component {
                 onChange={this.onToolboxChange}
               />
 
-              {/* <Legend
-                legend={_.cloneDeep(legend)}
-                onChange={this.onLegendChange}
-              /> */}
-
               <SeriesWordCloud
                 series={_.cloneDeep(series)}
                 onChange={this.onSeriesChange}
@@ -377,7 +359,6 @@ WordCloudEditor.propTypes = {
   colorPickerConfig: PropTypes.object,
   chartHeight: PropTypes.number,
   toolbox: PropTypes.object,
-  // legend: PropTypes.object,
   series: PropTypes.arrayOf(PropTypes.object),
   dataset: PropTypes.object,
   onChange: PropTypes.func,
@@ -393,7 +374,6 @@ WordCloudEditor.defaultProps = {
   colorPickerConfig: undefined,
   chartHeight: 420,
   toolbox: { feature: { saveAsImage: { title: '下载', pixelRatio: 5 } }, top: '10%' },
-  // legend: undefined,
   series: [{ type: 'wordCloud' }],
   dataset: undefined,
   onChange: undefined,

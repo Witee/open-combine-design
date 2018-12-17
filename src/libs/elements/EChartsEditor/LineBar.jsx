@@ -326,8 +326,9 @@ class LineBarEditor extends React.Component {
     */
     const categoryColumn = xAxisType === 'category' ? newXAxis.column : newYAxis.column;
     const valueColumn = xAxisType === 'category' ? newYAxis.column : newXAxis.column;
+    const newLegendColumn = _.get(newLegend, 'column', undefined);
 
-    const newDataset = table.dataSource2Dataset(dataset.source, categoryColumn, valueColumn, newLegend.column);
+    const newDataset = table.dataSource2Dataset(dataset.source, categoryColumn, valueColumn, newLegendColumn);
 
     const option = {
       title,
@@ -442,7 +443,7 @@ LineBarEditor.defaultProps = {
   colorPickerConfig: undefined,
   chartHeight: 420,
   toolbox: { feature: { saveAsImage: { title: '下载', pixelRatio: 5 } }, top: '10%' },
-  legend: {},
+  legend: { show: true }, // legend 不能为 undefined，否则在 render 时不参设置默认值
   xAxis: { name: 'X轴', type: 'category', column: undefined }, // column 为自定义参数, 不在 echarts.xAxis 中
   yAxis: { name: 'Y轴', type: 'value', column: undefined },
   series: undefined,
