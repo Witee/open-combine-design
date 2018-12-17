@@ -145,7 +145,6 @@ class App extends React.Component {
           <strong>
             v{version}
           </strong>
-          <script type="text/javascript" src="https://js.users.51.la/19801431.js"></script>
         </Footer>
       </Layout>
     );
