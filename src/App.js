@@ -8,7 +8,7 @@ import Index from 'containers/Index';
 import Input from 'containers/Input';
 import Placeholder from 'containers/Placeholder';
 import Popover from 'containers/Popover';
-import Chart from 'containers/Chart';
+import EChartsEditor from 'containers/EChartsEditor';
 import DataEditor from 'containers/DataEditor';
 import { version } from '../package.json';
 
@@ -104,9 +104,9 @@ class App extends React.Component {
                   </Link>
                 </Menu.Item>
 
-                <Menu.Item key={`${path}/components/chart`}>
-                  <Link to={`${path}/components/chart`}>
-                    Chart 图表
+                <Menu.Item key={`${path}/components/echarts-editor`}>
+                  <Link to={`${path}/components/echarts-editor`}>
+                    EChartsEditor 图表编辑器
                   </Link>
                 </Menu.Item>
 
@@ -131,7 +131,7 @@ class App extends React.Component {
 
                 <Route path={`${path}/components/placeholder`} component={Placeholder} />
                 <Route path={`${path}/components/popover`} component={Popover} />
-                <Route path={`${path}/components/chart`} component={Chart} />
+                <Route path={`${path}/components/echarts-editor`} component={EChartsEditor} />
                 <Route path={`${path}/components/data-editor`} component={DataEditor} />
 
                 {/* 默认路由 */}
