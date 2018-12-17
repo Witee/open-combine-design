@@ -65,7 +65,6 @@ const Chart = () => {
         <EChartsEditor.Pie
           style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
           title={{ text: '饼图编辑器', left: 'center', top: 'middle' }}
-          legend={{ data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'], orient: 'vertical', left: 'right', top: 'bottom' }}
           series={[
             {
               type: 'pie',
