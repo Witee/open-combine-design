@@ -157,6 +157,7 @@ class PieEditor extends React.Component {
       legend,
       series,
       dataset,
+      tooltip: { show: true },
     };
   }
 
