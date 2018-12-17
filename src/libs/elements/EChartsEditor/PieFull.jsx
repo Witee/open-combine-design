@@ -4,7 +4,7 @@ import { Row, Col, Button, Select, Tooltip, Icon, InputNumber } from 'antd';
 import { table } from 'open-js-tools';
 import Pie from './Pie';
 import DataEditor from '../DataEditor';
-
+import './style.css';
 
 /**
   带数据编辑的饼图专用编辑器
@@ -277,7 +277,7 @@ class PieFullEditor extends React.Component {
           </Col>
 
           <Col span={6} className="margin-top-bottom-middle tool">
-            <b>名称列:&nbsp;&nbsp;</b>
+            <b>聚合名称列:&nbsp;&nbsp;</b>
             <Select
               value={nameCol}
               style={{ width: 140 }}
@@ -291,7 +291,7 @@ class PieFullEditor extends React.Component {
           </Col>
 
           <Col span={6} className="margin-top-bottom-middle tool">
-            <b>数据列:&nbsp;&nbsp;</b>
+            <b>聚合数据列:&nbsp;&nbsp;</b>
             <Select
               value={dataCol}
               style={{ width: 140 }}

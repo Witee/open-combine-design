@@ -249,12 +249,14 @@ class LineBarEditor extends React.Component {
     const newLegend = _.cloneDeep(legend);
     let newSeries = _.cloneDeep(series);
 
+    const xColumn = _.get(newXAxis, 'column', undefined);
+    const yColumn = _.get(newYAxis, 'column', undefined);
+    const legendColumn = _.get(legend, 'column', undefined);
+
+    const xAxisType = _.get(newXAxis, 'type', 'category');
+
     if (bodyLength > 0) {
       const headerLength = _.get(header, 'length', 0);
-
-      const xColumn = _.get(newXAxis, 'column', undefined);
-      const yColumn = _.get(newYAxis, 'column', undefined);
-      const legendColumn = _.get(legend, 'column', undefined);
 
       // 1. 设置 xAxis.column 默认值
       if (_.isUndefined(xColumn) && headerLength >= 3) {
@@ -287,7 +289,7 @@ class LineBarEditor extends React.Component {
       const legendData = _.get(newLegend, 'data', []);
       newSeries = _.map(legendData, (l) => {
         const originSeries = _.find(newSeries, (s) => (_.get(s, 'name', null) === l));
-        const xAxisType = _.get(newXAxis, 'type', 'category');
+
         let x;
         let y;
         if (xAxisType === 'category') {
@@ -322,7 +324,10 @@ class LineBarEditor extends React.Component {
 
       参数文档: https://witee.github.io/open-js-tools/#api-table-dataSource2Dataset
     */
-    const newDataset = table.dataSource2Dataset(dataset.source, '日期', '声量', '平台');
+    const categoryColumn = xAxisType === 'category' ? newXAxis.column : newYAxis.column;
+    const valueColumn = xAxisType === 'category' ? newYAxis.column : newXAxis.column;
+
+    const newDataset = table.dataSource2Dataset(dataset.source, categoryColumn, valueColumn, newLegend.column);
 
     const option = {
       title,

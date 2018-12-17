@@ -22,19 +22,19 @@ const Chart = () => {
   ];
 
   const dataSource = [
-    ['日期', '平台', '声量'],
-    ['2018-07-20', '微博', 52872],
-    ['2018-07-20', '微信', 8510],
-    ['2018-07-21', '微博', 47381],
-    ['2018-07-21', '微信', 8195],
-    ['2018-07-22', '微博', 37072],
-    ['2018-07-22', '微信', 6925],
-    ['2018-07-23', '微博', 44665],
-    ['2018-07-23', '微信', 7934],
-    ['2018-07-24', '微博', 46858],
-    ['2018-07-24', '微信', 8889],
-    ['2018-07-25', '微博', 30272],
-    ['2018-07-25', '微信', 3925],
+    ['日期', '规则', '平台', '声量'],
+    ['2018-07-20', '规则一', '微博', 52872],
+    ['2018-07-20', '规则一', '微信', 8510],
+    ['2018-07-21', '规则一', '微博', 47381],
+    ['2018-07-21', '规则一', '微信', 8195],
+    ['2018-07-22', '规则一', '微博', 37072],
+    ['2018-07-22', '规则一', '微信', 6925],
+    ['2018-07-23', '规则一', '微博', 44665],
+    ['2018-07-23', '规则一', '微信', 7934],
+    ['2018-07-24', '规则一', '微博', 46858],
+    ['2018-07-24', '规则一', '微信', 8889],
+    ['2018-07-25', '规则一', '微博', 30272],
+    ['2018-07-25', '规则一', '微信', 3925],
   ];
   const codes = [
     {
@@ -42,32 +42,35 @@ const Chart = () => {
       example: (
         <EChartsEditor.LineBar
           dataset={{ source: dataSource }}
+          // eslint-disable-next-line
+          onChange={(configs) => { console.log('LineBar: ', configs); }}
         />
       ),
-      code: codeExamples.editor,
+      code: codeExamples.LineBar,
     },
     {
       title: '折线、柱状图全功能编辑器',
       example: (
         <EChartsEditor.LineBarFull
           dataSource={dataSource}
+          // eslint-disable-next-line
+          onChange={(configs) => { console.log('LineBarFull: ', configs); }}
         />
       ),
-      code: codeExamples.editor,
+      code: codeExamples.LineBarFull,
     },
     {
       title: '饼图编辑器',
       example: (
         <EChartsEditor.Pie
           style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
-          // eslint-disable-next-line
-          onChange={(configs) => { console.log('EChartsPie: ', configs); }}
           title={{ text: '饼图编辑器', left: 'center', top: 'middle' }}
           legend={{ data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'], orient: 'vertical', left: 'right', top: 'bottom' }}
           series={[
             {
               type: 'pie',
               radius: ['50%', '70%'],
+              label: { formatter: '{b} {d}%' },
             },
           ]}
           dataset={{
@@ -80,6 +83,8 @@ const Chart = () => {
               ['搜索引擎', 1548],
             ],
           }}
+          // eslint-disable-next-line
+          onChange={(configs) => { console.log('Pie: ', configs); }}
         />
       ),
       code: codeExamples.pie,
@@ -88,7 +93,19 @@ const Chart = () => {
       title: '饼图全功能编辑器',
       example: (
         <EChartsEditor.PieFull
+          title={{ text: '饼图全功能编辑器', left: 'center', top: 'middle' }}
+          series={[
+            {
+              type: 'pie',
+              radius: ['50%', '70%'],
+              label: { formatter: '{b} {d}%' },
+            },
+          ]}
+          nameCol="平台"
+          dataCol="声量"
           dataSource={dataSource}
+          // eslint-disable-next-line
+          onChange={(configs) => { console.log('PieFull: ', configs); }}
         />
       ),
       code: codeExamples.pieFull,
@@ -98,11 +115,11 @@ const Chart = () => {
       example: (
         <EChartsEditor.WordCloud
           style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
-          // eslint-disable-next-line
-          onChange={(configs) => { console.log('EChartsWordCloud: ', configs); }}
           title={{ text: '词云图' }}
           series={[{ type: 'wordCloud' }]}
           dataset={{ source: wordCloudData }}
+          // eslint-disable-next-line
+          onChange={(configs) => { console.log('EChartsWordCloud: ', configs); }}
         />
       ),
       code: codeExamples.wordCloud,
@@ -112,9 +129,11 @@ const Chart = () => {
       example: (
         <EChartsEditor.WordCloudFull
           dataSource={wordCloudData}
+          // eslint-disable-next-line
+          onChange={(configs) => { console.log('WordCloudFull: ', configs); }}
         />
       ),
-      code: codeExamples.pieFull,
+      code: codeExamples.wordCloudFull,
     },
   ];
   return (
