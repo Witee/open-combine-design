@@ -7,7 +7,7 @@ import DataEditor from '../DataEditor';
 import './style.css';
 
 /**
-  带数据编辑的饼图专用编辑器
+  带数据编辑的饼图专用编辑器 - 受控组件
 
   - 首次传递的 dataSource 将认为是原始数据，恢复时、DataEditor.Table 使用，所以 dataSource 为空时不应该渲染此组件
   - 饼图在使用数据时在 render 与 return 之间要经过以下处理
@@ -139,7 +139,7 @@ class PieFullEditor extends React.Component {
   }
 
   /**
-    提交数据
+    提交数据，父层需要将配置传回
   */
   submitConfig = (config = {}) => {
     const { onChange } = this.props;
