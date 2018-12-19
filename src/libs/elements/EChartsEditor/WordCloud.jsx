@@ -98,7 +98,7 @@ class WordCloud extends React.Component {
       title,
       backgroundColor,
       toolbox,
-      series: [_.assign(defaultConfigs, newSeries[0])],
+      series: [_.merge({}, defaultConfigs, newSeries[0])],
       dataset: newDataset,
     };
   }
