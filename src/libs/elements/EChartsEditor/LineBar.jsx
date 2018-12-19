@@ -232,6 +232,7 @@ class LineBarEditor extends React.Component {
     const dataSource = _.get(dataset, 'source', []);
     const header = _.get(dataSource, 0, []);
     const body = _.slice(dataSource, 1);
+    const headerLength = _.get(header, 'length', 0);
     const bodyLength = _.get(body, 'length', 0);
 
     /**
@@ -256,8 +257,6 @@ class LineBarEditor extends React.Component {
     const xAxisType = _.get(newXAxis, 'type', 'category');
 
     if (bodyLength > 0) {
-      const headerLength = _.get(header, 'length', 0);
-
       // 1. 设置 xAxis.column 默认值
       if (_.isUndefined(xColumn) && headerLength >= 3) {
         _.set(newXAxis, 'column', _.get(header, 0));

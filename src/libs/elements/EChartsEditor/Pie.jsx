@@ -9,6 +9,7 @@ import Toolbox from './configs/Toolbox';
 import Legend from './configs/Legend';
 import SeriesPie from './configs/series/Pie';
 import Baseline from '../Baseline';
+import PlaceHolder from '../Placeholder';
 
 const colors = [
   '#2874D7', '#70D12D', '#ECB513', '#1BCFE7', '#B8C0F2',
@@ -196,8 +197,8 @@ class PieEditor extends React.Component {
     const dataSource = _.get(dataset, 'source', []);
     const header = _.get(dataSource, 0, []);
     const body = _.slice(dataSource, 1);
-    const headerLength = _.get(dataSource, 'length', 0);
-    const bodyLength = _.get(dataSource, 'length', 0);
+    const headerLength = _.get(header, 'length', 0);
+    const bodyLength = _.get(body, 'length', 0);
 
     /**
       配置区域的高度跟随图表高度
@@ -233,6 +234,9 @@ class PieEditor extends React.Component {
       tooltip: { show: true },
     };
 
+    if (headerLength !== 2) {
+      return <PlaceHolder text="数据不合法，数据只能为 2 列，如 名称、数值" />;
+    }
     return (
       <Row style={style} gutter={16}>
         {editable && (
