@@ -7,9 +7,9 @@
     > 除 theme、chartHeight 外其它参数均为 echarts4.x 的标准参数;
     > 数据通过 dataset 传递
 
-    - EChartsLine
-    - EChartsPie
-    - EChartWordCloud
+    - LineBar
+    - Pie
+    - WordCloud
 
   - 全功能配置图表
 
@@ -17,9 +17,9 @@
     > 除 theme、chartHeight 外其它参数均为 echarts4.x 的标准参数;
     > 数据通过 dataSource 传递
 
-    - EChartsLineFull
-    - EChartsPieFull
-    - EChartWordCloudFull
+    - LineBarFull
+    - PieFull
+    - WordCloudFull
 
 ## 数据结构
 

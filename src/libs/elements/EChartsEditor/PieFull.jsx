@@ -177,7 +177,8 @@ class PieFullEditor extends React.Component {
 
     const header = _.get(newDataSource, 0, null);
     let body = _.slice(newDataSource, 1);
-    const bodyLength = _.get(body, 'length', 0);
+    const headerLength = _.get(header, 'length', 0);
+
     /**
       只保留最后N天数据
 
@@ -197,6 +198,9 @@ class PieFullEditor extends React.Component {
     /**
       将指定的列聚合，每个名称列的名称只保留一个，数据相加，用于只需要一列名称、一列数据的图表，如饼图、词云图
 
+      nameCol 默认第一列
+      dataCol 默认最后一列
+
       从 header 中分别找到选中 nameCol、dataCol 列的 index，
       将 body 聚合，同样名称作为 nameIndex 作为 key，dataIndex 作为 values，
       循环 values，计算每个 name 对应 data 的总和，最后将 headerName, headerDataName 作为表头，
@@ -206,11 +210,24 @@ class PieFullEditor extends React.Component {
               [NAME, DATA],
               ...
             ]
+
+      注意: <Pie /> 只接收两列数据，所以这里一定会进行聚合，没有设置时使用默认值聚合
     */
-    let aggrData = _.cloneDeep(newDataSource);
-    if (nameCol && bodyLength > 0 && dataCol && nameCol !== dataCol) {
-      const nameIndex = _.indexOf(header, nameCol);
-      const dataIndex = _.indexOf(header, dataCol);
+    let aggrData; // aggrData 最终生成的数据只能有两列，一列名称，一列数值
+    let newNameCol = nameCol;
+    let newDataCol = dataCol;
+
+    if (headerLength >= 2) {
+      if (_.isUndefined(nameCol)) {
+        newNameCol = _.get(header, 0);
+      }
+      if (_.isUndefined(dataCol)) {
+        newDataCol = _.get(header, (header.length - 1));
+      }
+
+
+      const nameIndex = _.indexOf(header, newNameCol);
+      const dataIndex = _.indexOf(header, newDataCol);
 
       if (nameIndex >= 0) {
         const grouppedData = _.groupBy(body, (b) => (_.get(b, nameIndex)));
@@ -279,7 +296,7 @@ class PieFullEditor extends React.Component {
           <Col span={6} className="margin-top-bottom-middle tool">
             <b>聚合名称列:&nbsp;&nbsp;</b>
             <Select
-              value={nameCol}
+              value={newNameCol}
               style={{ width: 140 }}
               disabled={!header}
               onChange={this.handleNameColSelect}
@@ -293,7 +310,7 @@ class PieFullEditor extends React.Component {
           <Col span={6} className="margin-top-bottom-middle tool">
             <b>聚合数据列:&nbsp;&nbsp;</b>
             <Select
-              value={dataCol}
+              value={newDataCol}
               style={{ width: 140 }}
               disabled={!header}
               onChange={this.handleDataColSelect}

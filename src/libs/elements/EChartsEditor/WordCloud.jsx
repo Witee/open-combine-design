@@ -8,9 +8,9 @@ import Title from './configs/Title';
 import Theme from './configs/Theme';
 import Height from './configs/Height';
 import Toolbox from './configs/Toolbox';
-// import Legend from './configs/Legend';
 import SeriesWordCloud from './configs/series/WordCloud';
 import Baseline from '../Baseline';
+import PlaceHolder from '../Placeholder';
 
 const colors = [
   '#2874D7', '#70D12D', '#ECB513', '#1BCFE7', '#B8C0F2',
@@ -49,7 +49,7 @@ const defaultConfigs = {
       即: http://www.echartsjs.com/option.html#title 中 .setOption() 中直接子参数
   - 每一个[标准参数]都返回其所有的配置，如 title = {text: '', ....}
   - 数据需要在本组件外处理完成，并通过[标准参数]中的 dataset 传递，只支持以下一种格式
-      即: 只有两列，(第一行为 dimensions(维度名、表头)，使用时排除掉，返回时再添加:
+      即: 只有两列，(第一行为 dimensions(维度名、表头)，第二列为数值, 使用时排除掉，返回时再添加:
         dataset = {
           source: [
             ['词', '值'],
@@ -67,9 +67,9 @@ const defaultConfigs = {
 
   @author Witee<github.com/Witee>
   @date   2018-12-05
-  @update 2018-12-10
+  @update 2018-12-17
 */
-class WordCloudEditor extends React.Component {
+class WordCloud extends React.Component {
   constructor(props) {
     super(props);
 
@@ -85,7 +85,7 @@ class WordCloudEditor extends React.Component {
     } = props;
 
     /**
-      首次加载时保存 header，在返回值时会使用
+      首次加载时保存 header，在返回值时会使用、render 中判断数据是否合法时会使用
     */
     this.header = _.get(dataset, ['source', 0], []);
 
@@ -296,6 +296,9 @@ class WordCloudEditor extends React.Component {
     const oldConfigStyle = { height: newConfigHeight, overflow: 'scroll', padding: '0 0.8rem 0 0', backgroundColor: '#f7f7f7', borderRadius: '4px' };
     const newConfigStyle = _.assign(oldConfigStyle, configStyle);
 
+    if (this.header.length !== 2) {
+      return <PlaceHolder text="数据不合法，数据只能为 2 列，如 名称、数值" />;
+    }
     return (
       <Row style={style} gutter={16}>
         {editable && (
@@ -349,7 +352,7 @@ class WordCloudEditor extends React.Component {
   }
 }
 
-WordCloudEditor.propTypes = {
+WordCloud.propTypes = {
   editable: PropTypes.bool,
   style: PropTypes.object,
   configStyle: PropTypes.object,
@@ -364,7 +367,7 @@ WordCloudEditor.propTypes = {
   onChange: PropTypes.func,
 };
 
-WordCloudEditor.defaultProps = {
+WordCloud.defaultProps = {
   editable: true,
   style: {},
   configStyle: {},
@@ -379,4 +382,4 @@ WordCloudEditor.defaultProps = {
   onChange: undefined,
 };
 
-export default WordCloudEditor;
+export default WordCloud;

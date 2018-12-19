@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Button, Select, Tooltip, Icon, InputNumber } from 'antd';
+import { Row, Col } from 'antd';
 import { table } from 'open-js-tools';
 import WordCloud from './WordCloud';
 import DataEditor from '../DataEditor';
@@ -21,7 +21,7 @@ import './style.css';
     @date   2018-12-14
 */
 
-class WordCloudFullEditor extends React.Component {
+class WordCloudFull extends React.Component {
   constructor(props) {
     super(props);
 
@@ -254,58 +254,6 @@ class WordCloudFullEditor extends React.Component {
           onChange={this.handleChartChange}
         />
 
-        <Row className="toolbar">
-          <Col span={4} className="margin-top-bottom-middle tool">
-            <Button icon="reload" onClick={this.handleReloadClick}>重置</Button>
-          </Col>
-
-          <Col span={8} className="margin-top-bottom-middle tool">
-            <div className="tool">
-              <b>动态过滤:&nbsp;&nbsp;</b>
-              使用最后
-              <InputNumber
-                size="small"
-                min={0}
-                max={99}
-                value={useLastNDaysData}
-                onChange={this.handleUseLastNDaysDataChange}
-              />
-              天数据
-              <Tooltip title="0 表示不过滤">
-                <Icon type="question-circle-o" className="icon" />
-              </Tooltip>
-            </div>
-          </Col>
-
-          <Col span={6} className="margin-top-bottom-middle tool">
-            <b>名称列:&nbsp;&nbsp;</b>
-            <Select
-              value={nameCol}
-              style={{ width: 140 }}
-              disabled={!header}
-              onChange={this.handleNameColSelect}
-            >
-              {_.map(header, (h) => (
-                <Select.Option key={h} value={h}>{h}</Select.Option>
-              ))}
-            </Select>
-          </Col>
-
-          <Col span={6} className="margin-top-bottom-middle tool">
-            <b>数据列:&nbsp;&nbsp;</b>
-            <Select
-              value={dataCol}
-              style={{ width: 140 }}
-              disabled={!header}
-              onChange={this.handleDataColSelect}
-            >
-              {_.map(header, (h) => (
-                <Select.Option key={h} value={h}>{h}</Select.Option>
-              ))}
-            </Select>
-          </Col>
-        </Row>
-
         <Row gutter={8}>
           <Col span={12}>
             <DataEditor.Table
@@ -331,7 +279,7 @@ class WordCloudFullEditor extends React.Component {
   }
 }
 
-WordCloudFullEditor.propTypes = {
+WordCloudFull.propTypes = {
   title: PropTypes.object,
   theme: PropTypes.oneOf(['default', 'dark']), // 默认已注册的主题
   backgroundColor: PropTypes.string,
@@ -348,7 +296,7 @@ WordCloudFullEditor.propTypes = {
   onChange: PropTypes.func,
 };
 
-WordCloudFullEditor.defaultProps = {
+WordCloudFull.defaultProps = {
   title: undefined,
   theme: 'default',
   backgroundColor: '#FFFFFF',
@@ -365,4 +313,4 @@ WordCloudFullEditor.defaultProps = {
   onChange: undefined,
 };
 
-export default WordCloudFullEditor;
+export default WordCloudFull;

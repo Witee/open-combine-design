@@ -118,7 +118,7 @@ const Chart = () => {
           series={[{ type: 'wordCloud' }]}
           dataset={{ source: wordCloudData }}
           // eslint-disable-next-line
-          onChange={(configs) => { console.log('EChartsWordCloud: ', configs); }}
+          onChange={(configs) => { console.log('WordCloud: ', configs); }}
         />
       ),
       code: codeExamples.wordCloud,
