@@ -73,7 +73,6 @@
     "react-dom": "^15.6.2"
   },
   "dependencies": {
-    "antd": "^2.13.14",
     "echarts": "^4.2.0-rc.2",
     "echarts-for-react": "^2.0.14",
     "echarts-wordcloud": "^1.1.3",
