@@ -20,7 +20,7 @@ import './style.css';
     @date   2018-12-13
 */
 
-class PieFullEditor extends React.Component {
+class PieFull extends React.Component {
   constructor(props) {
     super(props);
 
@@ -347,7 +347,7 @@ class PieFullEditor extends React.Component {
   }
 }
 
-PieFullEditor.propTypes = {
+PieFull.propTypes = {
   title: PropTypes.object,
   theme: PropTypes.oneOf(['default', 'dark']), // 默认已注册的主题
   backgroundColor: PropTypes.string,
@@ -364,7 +364,7 @@ PieFullEditor.propTypes = {
   onChange: PropTypes.func,
 };
 
-PieFullEditor.defaultProps = {
+PieFull.defaultProps = {
   title: undefined,
   theme: 'default',
   backgroundColor: '#FFFFFF',
@@ -381,4 +381,4 @@ PieFullEditor.defaultProps = {
   onChange: undefined,
 };
 
-export default PieFullEditor;
+export default PieFull;
