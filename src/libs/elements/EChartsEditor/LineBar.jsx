@@ -45,7 +45,7 @@ import Baseline from '../Baseline';
   @author Witee<github.com/Witee>
   @date   2018-12-14
 */
-class LineBarEditor extends React.Component {
+class LineBar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -414,7 +414,7 @@ class LineBarEditor extends React.Component {
   }
 }
 
-LineBarEditor.propTypes = {
+LineBar.propTypes = {
   editable: PropTypes.bool,
   style: PropTypes.object,
   configStyle: PropTypes.object,
@@ -432,7 +432,7 @@ LineBarEditor.propTypes = {
   onChange: PropTypes.func,
 };
 
-LineBarEditor.defaultProps = {
+LineBar.defaultProps = {
   editable: true,
   style: {},
   configStyle: {},
@@ -450,4 +450,4 @@ LineBarEditor.defaultProps = {
   onChange: undefined,
 };
 
-export default LineBarEditor;
+export default LineBar;
