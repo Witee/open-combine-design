@@ -175,7 +175,7 @@ class WordCloudFull extends React.Component {
           chartHeight={chartHeight}
           toolbox={toolbox}
           series={series}
-          dataset={{ source: newDataSource }} // 图表使用的数据与数据编辑器使用的数据不同
+          dataset={{ source: newDataSource }}
           onChange={this.handleChartChange}
         />
 
