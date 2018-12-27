@@ -338,7 +338,7 @@ class LineBar extends React.Component {
       yAxis: newYAxis,
       series: newSeries,
       dataset: newDataset,
-      tooltip: { show: true },
+      tooltip: { show: true, trigger: 'axis' },
       grid: { left: '12%' },
     };
 
