@@ -36,6 +36,12 @@ const Chart = () => {
     ['2018-07-25', '规则一', '微博', 30272],
     ['2018-07-25', '规则一', '微信', 3925],
   ];
+
+  /**
+    只有两列的数据
+  */
+  const wordCloudDataSimple = _.map(wordCloudData, (d) => ([d[1], d[2]]));
+
   const codes = [
     {
       title: '折线、柱状图编辑器',
@@ -116,7 +122,7 @@ const Chart = () => {
           style={{ backgroundColor: '#f9fbfe', padding: '1em' }}
           title={{ text: '词云图' }}
           series={[{ type: 'wordCloud' }]}
-          dataset={{ source: wordCloudData }}
+          dataset={{ source: wordCloudDataSimple }}
           // eslint-disable-next-line
           onChange={(configs) => { console.log('WordCloud: ', configs); }}
         />

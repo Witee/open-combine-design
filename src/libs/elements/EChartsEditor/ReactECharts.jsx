@@ -4,9 +4,16 @@ import PropTypes from 'prop-types';
 
 const ReactECharts = (props) => {
   const { option, theme, height, notMerge, lazyUpdate } = props;
+
+  const textStyle = {
+    fontFamily: '"Helvetica Neue For Number", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif',
+  };
+
+  const newOption = _.merge({}, { textStyle }, option);
+
   return (
     <EChartsForReact
-      option={option}
+      option={newOption}
       theme={theme}
       style={{ height: `${height}px` }}
       notMerge={notMerge}
