@@ -176,8 +176,8 @@ class PieFull extends React.Component {
     newDataSource = table.filterAndSorter(newDataSource, filters, sorter);
 
     const header = _.get(newDataSource, 0, null);
-    let body = _.slice(newDataSource, 1);
     const headerLength = _.get(header, 'length', 0);
+    let body = _.slice(newDataSource, 1);
 
     /**
       只保留最后N天数据
@@ -218,11 +218,11 @@ class PieFull extends React.Component {
     let newDataCol = dataCol;
 
     if (headerLength >= 2) {
-      if (_.isUndefined(nameCol)) {
+      if (_.isEmpty(nameCol)) {
         newNameCol = _.get(header, 0);
       }
-      if (_.isUndefined(dataCol)) {
-        newDataCol = _.get(header, (header.length - 1));
+      if (_.isEmpty(dataCol)) {
+        newDataCol = _.get(header, (headerLength - 1));
       }
 
 
