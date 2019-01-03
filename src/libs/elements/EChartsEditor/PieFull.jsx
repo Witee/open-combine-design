@@ -162,6 +162,7 @@ class PieFull extends React.Component {
       title,
       theme,
       backgroundColor,
+      colorPickerConfig,
       chartHeight,
       toolbox,
       legend,
@@ -262,6 +263,7 @@ class PieFull extends React.Component {
           title={title}
           theme={theme}
           backgroundColor={backgroundColor}
+          colorPickerConfig={colorPickerConfig}
           chartHeight={chartHeight}
           toolbox={toolbox}
           legend={legend}
@@ -351,6 +353,7 @@ PieFull.propTypes = {
   title: PropTypes.object,
   theme: PropTypes.oneOf(['default', 'dark']), // 默认已注册的主题
   backgroundColor: PropTypes.string,
+  colorPickerConfig: PropTypes.object,
   chartHeight: PropTypes.number,
   toolbox: PropTypes.object,
   legend: PropTypes.object,
@@ -368,6 +371,7 @@ PieFull.defaultProps = {
   title: undefined,
   theme: 'default',
   backgroundColor: '#FFFFFF',
+  colorPickerConfig: undefined,
   chartHeight: 420,
   toolbox: { feature: { saveAsImage: { title: '下载', pixelRatio: 5 } }, top: '10%' },
   legend: undefined,
