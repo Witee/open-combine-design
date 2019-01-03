@@ -1,12 +1,12 @@
 {
   "name": "open-combine-design",
-  "version": "1.1.15",
+  "version": "1.1.16",
   "description": "基于 ant design 组件的组合设计",
   "main": "dist/index.js",
   "scripts": {
     "packlibs": "rm -rf ./dist && webpack --config ./config/webpack.config.libs.js",
     "start": "NODE_ENV=development && node scripts/start.js",
-    "build": "node scripts/build.js",
+    "doc": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "pub": "npm run packlibs && npm publish"
   },
