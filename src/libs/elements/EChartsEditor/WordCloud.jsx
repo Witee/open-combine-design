@@ -202,7 +202,11 @@ class WordCloud extends React.Component {
         dataset,
       } = this.state;
 
-      const [newSeries, newDataset] = this.exchangeValues('toDataset', series, dataset);
+      let needChangeSeries = _.cloneDeep(series);
+      if (_.has(newConfig, 'series')) {
+        needChangeSeries = newConfig.series;
+      }
+      const [newSeries, newDataset] = this.exchangeValues('toDataset', needChangeSeries, dataset);
 
       const oldConfigs = {
         title,
@@ -215,7 +219,6 @@ class WordCloud extends React.Component {
       };
 
       const finalConfigs = _.assign(oldConfigs, newConfig, { series: newSeries }, { dataset: newDataset });
-
       // 回传
       onChange(finalConfigs);
     }
