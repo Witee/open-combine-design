@@ -297,7 +297,7 @@ class WordCloud extends React.Component {
     const newConfigStyle = _.assign(oldConfigStyle, configStyle);
 
     if (this.header.length !== 2) {
-      return <PlaceHolder text="数据不合法，数据只能为 2 列，如 名称、数值" />;
+      return <PlaceHolder style={{ height: newConfigHeight }} text="数据不合法，数据只能为 2 列，如 名称、数值" />;
     }
     return (
       <Row style={style} gutter={16}>
